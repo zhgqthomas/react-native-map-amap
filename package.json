@@ -1,0 +1,45 @@
+{
+  "name": "react-native-map-amap",
+  "version": "0.1.0",
+  "description": "React Native AMap MapView component for Android",
+  "main": "index.js",
+  "author": "Thomas Zhang <zhgqthomas@gmail.com>",
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "run:android": "./gradlew installDebug && npm run start:android",
+    "start:android": "adb shell am start -n com.shadark.android.react.amaps.example/.MainActivity",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zhgqthomas/react-native-map-amap.git"
+  },
+  "peerDependencies": {
+    "react": ">=15.4.0 || ^16.0.0-alpha",
+    "react-native": ">=0.40",
+    "prop-types": "^15.5.10"
+  },
+  "keywords": [
+    "react",
+    "react-native",
+    "react-component",
+    "map",
+    "mapview",
+    "amap",
+    "高德",
+    "mapkit"
+  ],
+  "devDependencies": {
+    "babel-jest": "21.0.2",
+    "babel-preset-react-native": "4.0.0",
+    "jest": "21.1.0",
+    "react": "^16.0.0-alpha.12",
+    "react-native": "0.48.4"
+  },
+  "rnpm": {
+    "android": {
+      "sourceDir": "./lib/android"
+    }
+  },
+  "license": "MIT"
+}
