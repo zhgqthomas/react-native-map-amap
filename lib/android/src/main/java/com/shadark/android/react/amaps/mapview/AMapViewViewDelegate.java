@@ -45,6 +45,7 @@ import java.util.Map;
 
 final class AMapViewViewDelegate implements AMap.OnMapLoadedListener, IViewDelegate {
 
+    private static final String TAG = AMapViewViewDelegate.class.getName();
     private static final String[] PERMISSIONS = new String[]{
             "android.permission.ACCESS_FINE_LOCATION", "android.permission.ACCESS_COARSE_LOCATION"};
     private static final int BASE_MAP_PADDING = 50;

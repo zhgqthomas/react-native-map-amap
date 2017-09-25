@@ -1,6 +1,5 @@
 package com.shadark.android.react.amaps.mapview;
 
-import android.util.Log;
 import android.view.View;
 
 import com.amap.api.maps.AMapOptions;
@@ -38,7 +37,6 @@ public final class AMapManager extends ViewGroupManager<AMapView> implements IMa
 
     @Override
     protected AMapView createViewInstance(ThemedReactContext reactContext) {
-        Log.d(TAG, "AMapView");
         AMapOptions options = new AMapOptions();
         options.zoomControlsEnabled(false);
         return new AMapView(reactContext, mAppContext, this, options);
