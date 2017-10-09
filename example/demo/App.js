@@ -9,7 +9,6 @@ import {
 } from 'react-native';
 import DisplayLatLng from './DisplayLatLng';
 import DefaultMarkers from './DefaultMarkers';
-import Test from './Test'
 
 class App extends Component {
     constructor(props) {
@@ -84,7 +83,6 @@ class App extends Component {
         return this.renderExamples([
             [DisplayLatLng, 'Tracking Position'],
             [DefaultMarkers, 'Default Markers'],
-            [Test, 'Test']
         ])
     }
 }
