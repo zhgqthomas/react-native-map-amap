@@ -6,11 +6,13 @@ import android.graphics.Point;
 import android.os.Handler;
 import android.support.v4.content.PermissionChecker;
 import android.support.v4.view.GestureDetectorCompat;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.amap.api.maps.AMap;
 import com.amap.api.maps.CameraUpdate;
@@ -45,6 +47,7 @@ import java.util.Map;
 
 final class AMapViewViewDelegate implements AMap.OnMapLoadedListener, IViewDelegate {
 
+    private static final String TAG = AMapViewViewDelegate.class.getName();
     private static final String[] PERMISSIONS = new String[]{
             "android.permission.ACCESS_FINE_LOCATION", "android.permission.ACCESS_COARSE_LOCATION"};
     private static final int BASE_MAP_PADDING = 50;
@@ -92,6 +95,10 @@ final class AMapViewViewDelegate implements AMap.OnMapLoadedListener, IViewDeleg
 
     @Override
     public void onMapLoaded() {
+        if (isDestroyed) {
+            return;
+        }
+
         mMapManager.pushEvent(mReactContext, mMapView.getView(), "onMapLoaded", Arguments.createMap());
 
         setMarkerClickListener();
@@ -217,9 +224,10 @@ final class AMapViewViewDelegate implements AMap.OnMapLoadedListener, IViewDeleg
         mMapView.getAMap().setOnMapClickListener(new AMap.OnMapClickListener() {
             @Override
             public void onMapClick(LatLng latLng) {
+                Toast.makeText(mContext, "latitude: " + latLng.latitude + " lng: " + latLng.longitude, Toast.LENGTH_SHORT).show();
                 WritableMap event = makeClickEventData(latLng);
                 event.putString("action", "press");
-                mMapManager.pushEvent(mReactContext, mMapView.getView(), "onPress", event);
+                mMapManager.pushEvent(mReactContext, mMapView.getView(), "onMapPress", event);
             }
         });
     }

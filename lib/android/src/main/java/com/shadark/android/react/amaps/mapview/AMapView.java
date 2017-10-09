@@ -57,7 +57,7 @@ public final class AMapView extends MapView implements IMapView, IViewDelegate {
 
     @Override
     public View getView() {
-        return AMapView.this;
+        return this;
     }
 
     @Override

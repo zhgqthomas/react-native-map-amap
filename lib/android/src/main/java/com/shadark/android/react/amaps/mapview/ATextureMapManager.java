@@ -1,6 +1,5 @@
 package com.shadark.android.react.amaps.mapview;
 
-import android.util.Log;
 import android.view.View;
 
 import com.amap.api.maps.AMapOptions;
@@ -37,7 +36,6 @@ public class ATextureMapManager extends ViewGroupManager<ATextureMapView> implem
 
     @Override
     protected ATextureMapView createViewInstance(ThemedReactContext reactContext) {
-        Log.d(TAG, "ATextureMapView");
         AMapOptions options = new AMapOptions();
         return new ATextureMapView(reactContext, mAppContext, this, options);
     }
@@ -129,7 +127,7 @@ public class ATextureMapManager extends ViewGroupManager<ATextureMapView> implem
 
     @Nullable
     @Override
-    public Map getExportedCustomBubblingEventTypeConstants() {
+    public Map getExportedCustomDirectEventTypeConstants() {
         return mManagerDelegate.getExportedCustomDirectEventTypeConstants();
     }
 

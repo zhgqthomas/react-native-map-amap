@@ -1,8 +1,10 @@
 package com.shadark.android.react.amaps.marker;
 
-import android.support.annotation.Nullable;
+import android.graphics.Color;
 import android.view.View;
 
+import com.amap.api.maps.model.Marker;
+import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.common.MapBuilder;
 import com.facebook.react.uimanager.LayoutShadowNode;
@@ -14,6 +16,8 @@ import com.shadark.android.react.amaps.callout.AMapCallout;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.annotation.Nullable;
 
 public class AMarkerManager extends ViewGroupManager<AMapMarker> {
 
@@ -79,6 +83,14 @@ public class AMarkerManager extends ViewGroupManager<AMapMarker> {
         view.setDraggable(draggable);
     }
 
+    @ReactProp(name = "pinColor", defaultInt = Color.RED, customType = "Color")
+    public void setPinColor(AMapMarker view, int pinColor) {
+        float[] hsv = new float[3];
+        Color.colorToHSV(pinColor, hsv);
+        // NOTE: android only supports a hue
+        view.setMarkerHue(hsv[0]);
+    }
+
     @Override
     @ReactProp(name = "zIndex", defaultFloat = 0.0f)
     public void setZIndex(AMapMarker view, float zIndex) {
@@ -117,6 +129,19 @@ public class AMarkerManager extends ViewGroupManager<AMapMarker> {
                 "showCallout", SHOW_INFO_WINDOW,
                 "hideCallout", HIDE_INFO_WINDOW
         );
+    }
+
+    @Override
+    public void receiveCommand(AMapMarker view, int commandId, @Nullable ReadableArray args) {
+        switch (commandId) {
+            case SHOW_INFO_WINDOW:
+                ((Marker) view.getFeature()).showInfoWindow();
+                break;
+
+            case HIDE_INFO_WINDOW:
+                ((Marker) view.getFeature()).hideInfoWindow();
+                break;
+        }
     }
 
     @Nullable

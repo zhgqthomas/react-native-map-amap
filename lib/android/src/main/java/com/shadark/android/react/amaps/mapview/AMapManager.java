@@ -38,7 +38,6 @@ public final class AMapManager extends ViewGroupManager<AMapView> implements IMa
 
     @Override
     protected AMapView createViewInstance(ThemedReactContext reactContext) {
-        Log.d(TAG, "AMapView");
         AMapOptions options = new AMapOptions();
         options.zoomControlsEnabled(false);
         return new AMapView(reactContext, mAppContext, this, options);
@@ -111,6 +110,7 @@ public final class AMapManager extends ViewGroupManager<AMapView> implements IMa
 
     @ReactProp(name = "region")
     public void setRegion(AMapView viewDelegate, ReadableMap region) {
+        Log.d(TAG, "setRegion called");
         mManagerDelegate.setRegion(viewDelegate, region);
     }
 
@@ -131,7 +131,7 @@ public final class AMapManager extends ViewGroupManager<AMapView> implements IMa
 
     @Nullable
     @Override
-    public Map getExportedCustomBubblingEventTypeConstants() {
+    public Map getExportedCustomDirectEventTypeConstants() {
         return mManagerDelegate.getExportedCustomDirectEventTypeConstants();
     }
 
