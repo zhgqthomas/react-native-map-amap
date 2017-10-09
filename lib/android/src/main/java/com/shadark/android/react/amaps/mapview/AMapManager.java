@@ -1,5 +1,6 @@
 package com.shadark.android.react.amaps.mapview;
 
+import android.util.Log;
 import android.view.View;
 
 import com.amap.api.maps.AMapOptions;
@@ -109,6 +110,7 @@ public final class AMapManager extends ViewGroupManager<AMapView> implements IMa
 
     @ReactProp(name = "region")
     public void setRegion(AMapView viewDelegate, ReadableMap region) {
+        Log.d(TAG, "setRegion called");
         mManagerDelegate.setRegion(viewDelegate, region);
     }
 
@@ -129,7 +131,7 @@ public final class AMapManager extends ViewGroupManager<AMapView> implements IMa
 
     @Nullable
     @Override
-    public Map getExportedCustomBubblingEventTypeConstants() {
+    public Map getExportedCustomDirectEventTypeConstants() {
         return mManagerDelegate.getExportedCustomDirectEventTypeConstants();
     }
 

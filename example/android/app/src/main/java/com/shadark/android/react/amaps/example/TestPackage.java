@@ -1,4 +1,4 @@
-package com.shadark.android.react.amaps.mapview;
+package com.shadark.android.react.amaps.example;
 
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.JavaScriptModule;
@@ -10,8 +10,11 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class AMapViewPackage implements ReactPackage {
+/**
+ * Created by zhanggq on 26/09/2017.
+ */
 
+public class TestPackage implements ReactPackage {
     @Override
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
         return Collections.emptyList();
@@ -25,8 +28,7 @@ public class AMapViewPackage implements ReactPackage {
     @Override
     public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
         return Arrays.<ViewManager>asList(
-                new AMapManager(reactContext),
-                new ATextureMapManager(reactContext)
+                new TestViewManager(reactContext)
         );
     }
 }

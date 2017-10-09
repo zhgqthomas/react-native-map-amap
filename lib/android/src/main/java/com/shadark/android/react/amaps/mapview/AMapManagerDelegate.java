@@ -164,24 +164,19 @@ public class AMapManagerDelegate {
     }
 
     public Map getExportedCustomDirectEventTypeConstants() {
-        Map<String, Map<String, String>> map = MapBuilder.of(
-                "onMapReady", MapBuilder.of("registrationName", "onMapReady"),
-                "onPress", MapBuilder.of("registrationName", "onPress"),
-                "onLongPress", MapBuilder.of("registrationName", "onLongPress"),
-                "onMarkerPress", MapBuilder.of("registrationName", "onMarkerPress"),
-                "onMarkerSelect", MapBuilder.of("registrationName", "onMarkerSelect"),
-                "onMarkerDeselect", MapBuilder.of("registrationName", "onMarkerDeselect"),
-                "onCalloutPress", MapBuilder.of("registrationName", "onCalloutPress")
-        );
-
-        map.putAll(MapBuilder.of(
-                "onMarkerDragStart", MapBuilder.of("registrationName", "onMarkerDragStart"),
-                "onMarkerDrag", MapBuilder.of("registrationName", "onMarkerDrag"),
-                "onMarkerDragEnd", MapBuilder.of("registrationName", "onMarkerDragEnd"),
-                "onPanDrag", MapBuilder.of("registrationName", "onPanDrag")
-        ));
-
-        return map;
+        return MapBuilder.builder()
+                .put("onMapLoaded", MapBuilder.of("registrationName", "onMapLoaded"))
+                .put("onMapPress", MapBuilder.of("registrationName", "onMapPress"))
+                .put("onLongPress", MapBuilder.of("registrationName", "onLongPress"))
+                .put("onMarkerPress", MapBuilder.of("registrationName", "onMarkerPress"))
+                .put("onMarkerSelect", MapBuilder.of("registrationName", "onMarkerSelect"))
+                .put("onMarkerDeselect", MapBuilder.of("registrationName", "onMarkerDeselect"))
+                .put("onCalloutPress", MapBuilder.of("registrationName", "onCalloutPress"))
+                .put("onMarkerDragStart", MapBuilder.of("registrationName", "onMarkerDragStart"))
+                .put("onMarkerDrag", MapBuilder.of("registrationName", "onMarkerDrag"))
+                .put("onMarkerDragEnd", MapBuilder.of("registrationName", "onMarkerDragEnd"))
+                .put("onPanDrag", MapBuilder.of("registrationName", "onPanDrag"))
+                .build();
     }
 
     public Map<String, Integer> getCommandsMap() {

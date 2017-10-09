@@ -8,6 +8,8 @@ import {
     ScrollView
 } from 'react-native';
 import DisplayLatLng from './DisplayLatLng';
+import DefaultMarkers from './DefaultMarkers';
+import Test from './Test'
 
 class App extends Component {
     constructor(props) {
@@ -80,7 +82,9 @@ class App extends Component {
 
     render() {
         return this.renderExamples([
-            [DisplayLatLng, 'Tracking Position']
+            [DisplayLatLng, 'Tracking Position'],
+            [DefaultMarkers, 'Default Markers'],
+            [Test, 'Test']
         ])
     }
 }

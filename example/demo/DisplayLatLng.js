@@ -22,6 +22,12 @@ export default class DisplayLatLng extends Component {
         super(props);
 
         this.state = {
+            initialRegion: {
+                latitude: LATITUDE,
+                longitude: LONGITUDE,
+                latitudeDelta: LATITUDE_DELTA,
+                longitudeDelta: LONGITUDE_DELTA,
+            },
             region: {
                 latitude: LATITUDE,
                 longitude: LONGITUDE,
@@ -38,32 +44,32 @@ export default class DisplayLatLng extends Component {
         this.setState({region});
     }
 
-    jumpRandom() {
+    jumpRandom = () => {
         this.setState({region: this.randomRegion()});
-    }
+    };
 
-    animateRandom() {
+    animateRandom = () => {
         this.map.animateToRegion(this.randomRegion());
-    }
+    };
 
-    animateRandomCoordinate() {
+    animateRandomCoordinate = () => {
         this.map.animateToCoordinate(this.randomCoordinate());
-    }
+    };
 
-    randomCoordinate() {
+    randomCoordinate = () => {
         const region = this.state.region;
         return {
             latitude: region.latitude + ((Math.random() - 0.5) * (region.latitudeDelta / 2)),
             longitude: region.longitude + ((Math.random() - 0.5) * (region.longitudeDelta / 2)),
         }
-    }
+    };
 
-    randomRegion() {
+    randomRegion = () => {
         return {
             ...this.state.region,
             ...this.randomCoordinate(),
         }
-    }
+    };
 
     render() {
         return (
@@ -74,7 +80,8 @@ export default class DisplayLatLng extends Component {
                     }}
                     provider={'default'}
                     style={styles.map}
-                    initialRegion={this.state.region}
+                    region={this.state.region}
+                    initialRegion={this.state.initialRegion}
                     onRegionChange={region => this.onRegionChange(region)}
                 />
                 <View style={[styles.bubble, styles.latlng]}>
@@ -84,6 +91,12 @@ export default class DisplayLatLng extends Component {
                     </Text>
                 </View>
                 <View style={styles.buttonContainer}>
+                    <TouchableOpacity
+                        onPress={() => this.jumpRandom()}
+                        style={[styles.bubble, styles.button]}
+                    >
+                        <Text style={styles.buttonText}>Jump</Text>
+                    </TouchableOpacity>
                     <TouchableOpacity
                         onPress={() => this.animateRandom()}
                         style={[styles.bubble, styles.button]}

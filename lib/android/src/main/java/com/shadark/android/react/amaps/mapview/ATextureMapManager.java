@@ -127,7 +127,7 @@ public class ATextureMapManager extends ViewGroupManager<ATextureMapView> implem
 
     @Nullable
     @Override
-    public Map getExportedCustomBubblingEventTypeConstants() {
+    public Map getExportedCustomDirectEventTypeConstants() {
         return mManagerDelegate.getExportedCustomDirectEventTypeConstants();
     }
 
